@@ -1,70 +1,55 @@
-# house_price_prediction_service
-Deployment of a House Price Prediction Service
+# House Price Prediction Service
 
+## Brief Description
 
-# Take-Home Task: Deploy a House Price Prediction Service (3-Hour Time Limit)
+This code implements a machine learning prediction API service for house price estimation. It loads a pre-trained regression model and exposes it via a Flask web server with two main endpoints: `/health` for service health checks and `/predict` for making predictions. The `/predict` endpoint accepts JSON input containing house features, validates the input using Pydantic, processes the data, and returns the predicted house price as a JSON response.
 
-## Background
-This assignment is designed to be completed within 3 hours. Focus on the core requirements first before attempting any bonus tasks.
+## Instructions for Running the Code and Tests
 
-You've joined a startup building microservices for real estate analytics. You're asked to build a service that predicts house prices based on basic features (e.g., metro location, location score, etc.). This service should be easy to test, deploy, and monitor in production.
+### 1. Set Up a Virtual Environment
 
-## Task Overview
-You will:
-1. Train a simple model on a housing dataset.
-2. Serve it via a basic REST API.
-3. Write essential tests for the model.
-4. Answer key deployment questions.
+It is recommended to use a Python virtual environment to isolate your project’s dependencies.
 
-## Provided Resources
-- A CSV file with house price data (included with this assignment).
-
-## Assignment Structure
-Please organize your submission with the following structure:
+**Create a new virtual environment:**
 ```
-/
-├── app/           # API service code
-├── data/          # Data files (pre-filled with provided CSV)
-├── docs/          # Documentation
-├── ml/            # Model training code
-└── tests/         # Test files
+python -m venv venv
 ```
 
-### 1. Model Training (in /ml)
-- Load any public housing dataset.
-- Implement minimal feature engineering and train a simple model (don't focus on scoring the model).
-- Save the model to disk.
 
-### 2. REST API (in /app)
-- Build an API with any web framework of your choice.
-- Endpoints:
-  - `POST /predict` — accepts JSON input for features, returns predicted price.
-  - `GET /health` — returns a static OK response.
-- Ensure request input is validated.
-- Implement basic logging functionality for API requests and responses.
+**Activate the virtual environment:**
 
-### 3. Testing (in /tests)
-- Write basic tests to verify model loading and prediction.
+- On macOS/Linux:
+    ```
+    source venv/bin/activate
+    ```
+- On Windows:
+    ```
+    venv\Scripts\activate
+    ```
 
-### 4. Deployment Considerations (in /docs/DEPLOYMENT.md)
-Write brief answers (1-2 paragraphs each) to these two basic questions:
-- What approach would you use to version and track different models in production?
-- What key metrics would you monitor for this API service and the prediction model?
+### 2. Install Dependencies
 
-## Constraints
-- Keep it under 500 lines of total code (including tests).
-- You can use any libraries or frameworks of your choice. Include requirements.txt or package files as appropriate.
+Make sure you are in your project’s root directory (where `requirements.txt` is located), then run:
+ ```
+pip install -r requirements.txt
+ ```
+This will install all required packages for the project into your virtual environment.
 
-## Submission Instructions
-1. Create a GitHub repository with your solution.
-2. Ensure your repository is public or provide access to the reviewers.
-3. Include a README.md with:
-   - Brief description of your solution
-   - Instructions for running the code and tests
-   - Any dependencies required
+### 3. Run the API Service
 
-## Bonus
-- Set up a CI/CD workflow (.github/workflows/) to install dependencies and run tests.
-- Containerize the application.
+Start the Flask API by running:
+ ```
+ python app.py
+  ```
+ By default, the service will be available at [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+
+### 4. Run the Tests
+
+**Make sure the Flask API is running** (see step 3) before running the tests.
+
+To execute the tests, run:
+ ```
+python tests/test_predict.py
+ ```
 
 
