@@ -45,11 +45,17 @@ Start the Flask API by running:
 
 ### 4. Run the Tests
 
-**Make sure the Flask API is running** (see step 3) before running the tests.
+
 
 To execute the tests, run:
  ```
-python tests/test_predict.py
+pytest --disable-warnings
  ```
 
+### 5. Deployment
+See considerations in [Docs folder](docs/).
+
+#### Resources 
+- https://medium.com/@anshitvishwa111/hosting-machine-learning-models-as-an-api-service-1cf5cb5a1e2f
+- https://docs.pytest.org/en/stable/getting-started.html
 
